@@ -7,6 +7,6 @@ To run the codes, create a folder named **data**. Download the following data an
  
  - the internal resistance data used to complement batch 8 can be downloaded from https://doi.org/10.7488/ds/2957 which is published in the paper [Strange, Calum; dos Reis, Goncalo. (2020). Synthetic IR data for the Attia et al. (2020) battery dataset, [dataset]. University of Edinburgh. School of Mathematics.](https://doi.org/10.7488/ds/2957)
 
-Create a folders named **plots** and **models** to store the generated figures and models respectively.
+Create folders named **plots** and **models** to store the generated figures and models respectively.
 
 The **utils** folder contains all the helper functions used in the **Jupyter notebooks**.
