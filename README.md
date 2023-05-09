@@ -10,3 +10,5 @@ To run the codes, create a folder named **data**. Download the following data an
 Create folders named **plots** and **models** to store the generated figures and models respectively.
 
 The **utils** folder contains all the helper functions used in the **Jupyter notebooks**.
+
+_Licence: CC BY 4.0._
