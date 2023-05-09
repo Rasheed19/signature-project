@@ -11,4 +11,4 @@ Create folders named **plots** and **models** to store the generated figures and
 
 The **utils** folder contains all the helper functions used in the **Jupyter notebooks**.
 
-_Licence: CC BY 4.0._
+_Licence: [CC BY 4.0.](https://creativecommons.org/licenses/by/4.0/legalcode)_
