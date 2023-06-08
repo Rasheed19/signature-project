@@ -52,16 +52,14 @@ def multi_cycle_features(feature_values_list, n=50):
            list of cross-cycle feature values.
     """
     try:
-        # Take the portion of feature_values_list corresponding to n
-        feature_values_n = feature_values_list[:n]
 
         # Take 10% of n
         i = int(0.1 * n)
 
         # Create features corresponding to n
-        y_0 = np.median(feature_values_n[:i])
-        y_med = np.median(feature_values_n[int((n / 2) - i):int((n / 2) + i)])
-        y_end = np.median(feature_values_n[-i:])
+        y_0 = np.median(feature_values_list[:i])
+        y_med = np.median(feature_values_list[int((n / 2) - i):int((n / 2) + i)])
+        y_end = np.median(feature_values_list[-i:])
         y_endm0 = y_end - y_0
         y_diff = (y_end - y_med) - (y_med - y_0)
 
