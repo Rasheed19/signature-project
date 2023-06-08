@@ -44,7 +44,7 @@ def ccv_signature_features(data_dict, step_size=1, n=50, sig_level=2, multi_cycl
         # initialize a dictionary to store CCV for each cycle
         this_cycle = {}
 
-        for cycle in data_dict[cell]['cycle_dict'].keys():
+        for cycle in list(data_dict[cell]['cycle_dict'].keys())[:n]:
             # get the discharge values
             i_values = utils_gn.get_charge_discharge_values(data_dict, 'I', cell, cycle, 'di')
             v_values = utils_gn.get_charge_discharge_values(data_dict, 'V', cell, cycle, 'di')
