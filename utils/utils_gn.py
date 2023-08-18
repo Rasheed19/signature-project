@@ -534,6 +534,16 @@ def read_data(fname, path=f"{ROOT_DIR}/data"):
 
     return loaded_file
 
+def dump_data(data, path, fname):
+    """
+    Function that dumps a picked data into 
+    a specified path
+    """
+    with open(os.path.join(path, fname), "wb") as fp:
+            pickle.dump(data, fp)
+    
+    return None
+
 
 def scaler(X):
     """
