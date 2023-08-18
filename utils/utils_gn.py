@@ -538,6 +538,16 @@ def dump_data(data, path, fname):
     """
     Function that dumps a picked data into 
     a specified path
+
+     Args:
+    ----
+        data (any): data to be pickled
+        fname (str):  file name
+        folder (str): folder name
+
+    Returns:
+    -------
+            None
     """
     with open(os.path.join(path, fname), "wb") as fp:
             pickle.dump(data, fp)
