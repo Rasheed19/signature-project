@@ -522,7 +522,7 @@ def read_data(fname, path=f"{ROOT_DIR}/data"):
     Args:
     ----
         fname (str):  file name
-        folder (str): folder name
+        path (str): path to folder
 
     Returns:
     -------
@@ -543,7 +543,7 @@ def dump_data(data, path, fname):
     ----
         data (any): data to be pickled
         fname (str):  file name
-        folder (str): folder name
+        path (str): path to folder
 
     Returns:
     -------
