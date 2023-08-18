@@ -9,6 +9,7 @@ from datetime import datetime
 import importlib
 import hashlib
 from rrct.algorithm import RRCTFeatureSelection
+from config.definitions import ROOT_DIR
 
 importlib.reload(utils_models)
 importlib.reload(utils_dgrd)
@@ -374,14 +375,14 @@ def load_and_save_dict_data(num_cycles=None, option=1):
 
     # paths for data file with each batch of cells
     mat_filenames = {
-        "batch1": os.path.join(".", "data", "2017-05-12_batchdata_updated_struct_errorcorrect.mat"),
-        "batch2": os.path.join(".", "data", "2017-06-30_batchdata_updated_struct_errorcorrect.mat"),
-        "batch3": os.path.join(".", "data", "2018-04-12_batchdata_updated_struct_errorcorrect.mat"),
-        "batch4": os.path.join(".", "data", "2018-08-28_batchdata_updated_struct_errorcorrect.mat"),
-        "batch5": os.path.join(".", "data", "2018-09-02_batchdata_updated_struct_errorcorrect.mat"),
-        "batch6": os.path.join(".", "data", "2018-09-06_batchdata_updated_struct_errorcorrect.mat"),
-        "batch7": os.path.join(".", "data", "2018-09-10_batchdata_updated_struct_errorcorrect.mat"),
-        "batch8": os.path.join(".", "data", "2019-01-24_batchdata_updated_struct_errorcorrect.mat")}
+        "batch1": os.path.join(f"{ROOT_DIR}", "data", "2017-05-12_batchdata_updated_struct_errorcorrect.mat"),
+        "batch2": os.path.join(f"{ROOT_DIR}", "data", "2017-06-30_batchdata_updated_struct_errorcorrect.mat"),
+        "batch3": os.path.join(f"{ROOT_DIR}", "data", "2018-04-12_batchdata_updated_struct_errorcorrect.mat"),
+        "batch4": os.path.join(f"{ROOT_DIR}", "data", "2018-08-28_batchdata_updated_struct_errorcorrect.mat"),
+        "batch5": os.path.join(f"{ROOT_DIR}", "data", "2018-09-02_batchdata_updated_struct_errorcorrect.mat"),
+        "batch6": os.path.join(f"{ROOT_DIR}", "data", "2018-09-06_batchdata_updated_struct_errorcorrect.mat"),
+        "batch7": os.path.join(f"{ROOT_DIR}", "data", "2018-09-10_batchdata_updated_struct_errorcorrect.mat"),
+        "batch8": os.path.join(f"{ROOT_DIR}", "data", "2019-01-24_batchdata_updated_struct_errorcorrect.mat")}
 
     start = time_monitor()
     print("Loading batch 1 data...")
@@ -504,17 +505,17 @@ def load_and_save_dict_data(num_cycles=None, option=1):
         data_dict = {**batch1, **batch2, **batch3, **batch4, **batch5, **batch6, **batch7, **batch8}
 
         # save the dict as a pickle file
-        with open(os.path.join("data", "data_" + filename_suffix), "wb") as fp:
+        with open(os.path.join(f"{ROOT_DIR}/data", "data_" + filename_suffix), "wb") as fp:
             pickle.dump(data_dict, fp)
 
     elif option == 2:
         # save the batch separately
         for i, batch in zip(('1', '2', '3', '4', '5', '6', '7', '8'), batches):
-            with open(os.path.join("data", "batch" + i + '_' + filename_suffix), "wb") as fp:
+            with open(os.path.join(f"{ROOT_DIR}/data", "batch" + i + '_' + filename_suffix), "wb") as fp:
                 pickle.dump(batch, fp)
 
 
-def read_data(fname, folder="data"):
+def read_data(fname, path=f"{ROOT_DIR}/data"):
     """
     Function that read .pkl file from a 
     a given folder.
@@ -529,7 +530,7 @@ def read_data(fname, folder="data"):
             loaded file.
     """
     # Load pickle data
-    with open(os.path.join(folder, fname), "rb") as fp:
+    with open(os.path.join(path, fname), "rb") as fp:
         loaded_file = pickle.load(fp)
 
     return loaded_file
