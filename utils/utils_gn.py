@@ -359,7 +359,6 @@ def load_data(filename, batch_num, num_cycles=None):
 
 
 def load_and_save_dict_data(num_cycles=None, option=1):
-    # sourcery skip: low-code-quality
     """
     This function load and save downloaded matlab files as pickle files.
     Note that the battery data (downloaded from https://data.matr.io/1/) must be
