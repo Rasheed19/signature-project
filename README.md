@@ -10,7 +10,7 @@ This repository contains the codes for all the experiments performed in the pape
 ## Set up for running locally
 1. Clone the repository by running
     ```
-    git clonehttps://github.com/Rasheed19/signature-project.git
+    git clone https://github.com/Rasheed19/signature-project.git
     ```
 1. Navigate to the root folder, i.e., `signature-project` and create a python virtual environment by running
     ```
