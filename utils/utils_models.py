@@ -295,7 +295,15 @@ def create_time_steps():
 
     return dict(zip(np.arange(len(time_steps))+1, time_steps))
 
-def model_feature_selection(train_raw, test_raw, y_test_df, target_list, k_list, params, step_size=1):
+def model_feature_selection(
+        train_raw,
+        test_raw,
+        y_test_df,
+        target_list,
+        k_list,
+        params,
+        step_size=1
+    ):
 
     """
     Function that performs feature selection through rrct; build 
@@ -320,27 +328,40 @@ def model_feature_selection(train_raw, test_raw, y_test_df, target_list, k_list,
 
 
 
-    model = TransformedTargetRegressor(XGBRegressor(**params), func=np.log10, inverse_func=antilog)
+    model = TransformedTargetRegressor(
+        XGBRegressor(**params),
+        func=np.log10,
+        inverse_func=antilog
+    )
 
-    track_metrics = pd.DataFrame(columns=['MAE_train', 'MAPE_train', 'RMSE_train', 'MAE_test', 'MAPE_test', 'RMSE_test'], index = k_list)
-
-    # For cross validation 
-    #scores_summary_list = []
-    #scores_raw_list = []
+    track_metrics = pd.DataFrame(
+        columns=['MAE_train', 'MAPE_train', 'RMSE_train', 'MAE_test', 'MAPE_test', 'RMSE_test'],
+        index = k_list
+    )
 
     for k in k_list:
         print('k: ', k)
 
         # Transforms raw data to training data
-        tr = utils_gn.FeatureTransformation(n=100, feature_selection=True, k=k, step_size=step_size)
-        X_train, y_train = tr.fit_transform(data=train_raw, targets=target_list, with_eol=True, sig_level=2, multi_cycle=False)
-        X_test, y_test = tr.transform(test_raw, sig_level=2, multi_cycle=False), y_test_df[target_list].values
-
-        # define the GridSearchCV object and fit to the data gs = GridSearchCV(estimator=model, param_grid=params,
-        # scoring='neg_mean_absolute_error', cv=3).fit(X_train, y_train)
-
-        # train_scores = metrics_calculator(y_train, gs.best_estimator_.predict(X_train), multi=False)
-        # test_scores = metrics_calculator(y_test, gs.best_estimator_.predict(X_test), multi=False)
+        tr = utils_gn.FeatureTransformation(
+            n=100,
+            feature_selection=True,
+            k=k,
+            step_size=step_size
+        )
+        X_train, y_train = tr.fit_transform(
+            data=train_raw,
+            targets=target_list,
+            with_eol=True,
+            sig_level=2,
+            multi_cycle=False
+        )
+        X_test = tr.transform(
+            test_raw,
+            sig_level=2,
+            multi_cycle=False
+        )
+        y_test= y_test_df[target_list].values
        
         model = model.fit(X_train, y_train)
         train_scores = metrics_calculator(y_train, model.predict(X_train), multi=False)
@@ -348,22 +369,21 @@ def model_feature_selection(train_raw, test_raw, y_test_df, target_list, k_list,
 
         track_metrics.loc[k, ['MAE_train', 'MAPE_train', 'RMSE_train']] = train_scores['MAE'], train_scores['MAPE'], train_scores['RMSE']
         track_metrics.loc[k, ['MAE_test', 'MAPE_test', 'RMSE_test']] = test_scores['MAE'], test_scores['MAPE'],test_scores['RMSE']
-        '''
-        # -------------------For cross validation purpose------------------------------------------------------#
-        cv = RepeatedKFold(n_splits=3, n_repeats=10, random_state=42)
-        scores_summary, scores_raw = kfold_cross_validation(X=X_train, y=y_train, model=model, cv=cv)
-        scores_summary_list.append(scores_summary)
-        scores_raw_list.append(scores_raw)
-        '''
-
-        #track_metrics.loc[k, ['MAE_test', 'MAPE_test', 'RMSE_test']] = scores_summary['test_MAE'], scores_summary['test_MAPE'], scores_summary['test_RMSE']
 
     return track_metrics
-    #return scores_summary_list, scores_raw_list
 
 
 
-def model_feature_selection_robustness(train_raw, test_raw, y_test_df, target_list, params, step_size_dict, times_needed, k):
+def model_feature_selection_robustness(
+        train_raw,
+        test_raw,
+        y_test_df,
+        target_list,
+        params,
+        step_size_dict,
+        times_needed,
+        k
+    ):
     """
     This function tests the robustness of model and
     rrct to change in frequency of data subsampling. 
@@ -387,10 +407,17 @@ def model_feature_selection_robustness(train_raw, test_raw, y_test_df, target_li
     """
 
     # Initialize model
-    model = TransformedTargetRegressor(XGBRegressor(**params), func=np.log10, inverse_func=antilog)
+    model = TransformedTargetRegressor(
+        XGBRegressor(**params),
+        func=np.log10,
+        inverse_func=antilog
+    )
     
     # Initialize model tracker data frame
-    track_metrics = pd.DataFrame(columns=['Selected features', 'MAE_train', 'MAPE_train', 'RMSE_train', 'MAE_test', 'MAPE_test', 'RMSE_test'], index =[step_size_dict[key] for key in times_needed])
+    track_metrics = pd.DataFrame(
+        columns=['Selected features', 'MAE_train', 'MAPE_train', 'RMSE_train', 'MAE_test', 'MAPE_test', 'RMSE_test'],
+        index =[step_size_dict[key] for key in times_needed]
+    )
 
     for h in times_needed:
         print('h: ', step_size_dict[h])
@@ -416,7 +443,15 @@ def model_feature_selection_robustness(train_raw, test_raw, y_test_df, target_li
     return track_metrics
 
 
-def test_of_robustness(model, model_tr, time_steps, X_test_data, y_test_data, targets, step_size_dict):
+def test_of_robustness(
+        model,
+        model_tr,
+        time_steps,
+        X_test_data,
+        y_test_data,
+        targets,
+        step_size_dict
+    ):
     """
     A function to test the robustness of the model built under signature method. The test
     is carried out by using the model to predict targets using features generated under 
@@ -495,9 +530,11 @@ class ModelPipeline:
 
     def fit(self, X, y):
         if self.transform_target:
-            self.best_model = TransformedTargetRegressor(MultiOutputRegressor(XGBRegressor(**self.params)),
-                                                         func=np.log10,
-                                                         inverse_func=antilog)
+            self.best_model = TransformedTargetRegressor(
+                MultiOutputRegressor(XGBRegressor(**self.params)),
+                func=np.log10,
+                inverse_func=antilog
+            )
 
             self.best_model.fit(X, y)
             return self.best_model

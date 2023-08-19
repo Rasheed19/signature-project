@@ -5,10 +5,10 @@ import pickle
 import h5py
 from sklearn.preprocessing import StandardScaler
 from utils import utils_models, utils_dgrd, utils_sig
+from rrct.algorithm import RRCTFeatureSelection
 from datetime import datetime
 import importlib
 import hashlib
-from rrct.algorithm import RRCTFeatureSelection
 from config.definitions import ROOT_DIR
 
 importlib.reload(utils_models)
@@ -242,9 +242,13 @@ class FeatureTransformation:
 
     def fit_transform(self, data, targets, with_eol, sig_level=None, multi_cycle=True):
        
-        df = utils_sig.ccv_signature_features(data_dict=data, step_size=self.step_size, n=self.n,
-                                                  sig_level=sig_level, multi_cycle=multi_cycle).join(
-                                                      utils_dgrd.create_knee_elbow_data(data, with_eol)[targets])
+        df = utils_sig.ccv_signature_features(
+            data_dict=data,
+            step_size=self.step_size,
+            n=self.n,
+            sig_level=sig_level,
+            multi_cycle=multi_cycle
+            ).join(utils_dgrd.create_knee_elbow_data(data, with_eol)[targets])
 
         df_features_only = df.drop(targets, axis=1)
 
@@ -269,8 +273,13 @@ class FeatureTransformation:
 
     def transform(self, data, sig_level=None, multi_cycle=True):
        
-        df = utils_sig.ccv_signature_features(data_dict=data, step_size=self.step_size, n=self.n,
-                                                  sig_level=sig_level, multi_cycle=multi_cycle)
+        df = utils_sig.ccv_signature_features(
+            data_dict=data,
+            step_size=self.step_size,
+            n=self.n,
+            sig_level=sig_level,
+            multi_cycle=multi_cycle
+        )
 
         if self.feature_selection:
             return self.sc.transform(self.rrct.select(df.values))
