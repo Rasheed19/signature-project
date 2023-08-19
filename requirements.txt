@@ -1,11 +1,11 @@
 mlflow==2.4.0
 iisignature==0.24
 pandas==2.0.2
-numpy==1.24.3
+numpy==1.25.2
 matplotlib==3.7.1
 scipy==1.10.1
 scikit-learn==1.2.2
-rrct==1.0.1
+rrct==1.0.4
 DateTime==5.1
 h5py==3.8.0
 xgboost==1.7.5
