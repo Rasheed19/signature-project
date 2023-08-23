@@ -28,7 +28,7 @@ This repository contains the codes for all the experiments performed in the pape
     ```
 1. Prepare all modules by running
     ```
-    pip install .
+    pip install -e .
     ```
 1. Create a folder named **data** in the root directory **signature-project**. Download the following data and put them in this folder:
     - all the batches of data in this link https://data.matr.io/1/ which are the data for the papers [Data driven prediciton of battery cycle life before capacity degradation by K.A. Severson, P.M. Attia, et al](https://www.nature.com/articles/s41560-019-0356-8) and [Attia, P.M., Grover, A., Jin, N. et al. Closed-loop optimization of fast-charging protocols for batteries with machine learning. Nature 578, 397–402 (2020).](https://doi.org/10.1038/s41586-020-1994-5)
