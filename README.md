@@ -16,12 +16,6 @@ This repository contains the codes for all the experiments performed in the pape
     ```
     python3 -m venv .venv
     ``` 
-    on a linux machine or
-
-    ```
-    python -m venv .venv
-    ```
-    on a window machine
 1. Activate the virtual environment by running
     ```
     source .venv/bin/activate
