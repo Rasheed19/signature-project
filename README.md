@@ -1,5 +1,5 @@
 # signature-project
-This repository contains the codes for all the experiments performed in the paper _'Early prediction of Remaining Useful Life for Lithium-ion cells using only signatures of voltage curves at 4 minute sampling rates.'_
+This repository contains the codes for all the experiments performed in the paper [Early prediction of Remaining Useful Life for Lithium-ion cells using only signatures of voltage curves at 4 minute sampling rates.](https://www.sciencedirect.com/science/article/pii/S0306261923013387?via%3Dihub#fig2)
 
 ## Folder analysis
 
@@ -16,12 +16,6 @@ This repository contains the codes for all the experiments performed in the pape
     ```
     python3 -m venv .venv
     ``` 
-    on a linux machine or
-
-    ```
-    python -m venv .venv
-    ```
-    on a window machine
 1. Activate the virtual environment by running
     ```
     source .venv/bin/activate
