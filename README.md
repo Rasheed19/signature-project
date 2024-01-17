@@ -37,6 +37,7 @@ This repository contains the codes for all the experiments performed in the pape
     deactivate
     ```
 If you use this work in your project, please reference:
+
     @article{IBRAHEEM2023121974,
         title = {Early prediction of Lithium-ion cell degradation trajectories using signatures of voltage curves up to 4-minute sub-sampling rates},
         journal = {Applied Energy},
