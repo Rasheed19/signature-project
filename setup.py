@@ -24,7 +24,6 @@ setup(
     packages=find_packages(),
     python_requires=">=3.7",
     install_requires=[
-        "mlflow==2.4.0",
         "iisignature==0.24",
         "pandas==2.0.2",
         "numpy==1.25.2",
