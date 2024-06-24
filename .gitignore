@@ -156,7 +156,8 @@ cython_debug/
 # Ignore data, models and plots files
 data/
 plots/
-models/
+legacy/
+sigvenv/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
