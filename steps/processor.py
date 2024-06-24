@@ -114,7 +114,7 @@ def experimental_data_preprocessor(
     step_size: int,
     sig_level: int,
     no_scaled_features: bool = False,
-):
+) -> ExperimentalDataPreprocessorOutput:
     features = {
         k: ccv_signature_features(
             data_dict=data,
