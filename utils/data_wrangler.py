@@ -245,15 +245,13 @@ def ccv_signature_features(
     return_ccv: bool = False,
     return_sig: bool = False,
 ) -> pd.DataFrame | dict:
-
-    # FIXME: update docstring for step_size
     """
     Function that extracts features from battery cycling data using signature method.
 
     Args:
     ----
         data_dict:   dictionary containing battery cycling data
-        step_size:   code for subsampling time steps; check the output of create_time_steps() in utils_models
+        step_size:   code for subsampling time steps
         num_cycles:  a positive integer indicating the number of cycles to use for feature extraction
         sig_level:   a positive integer indicating the number signature levels
         multi_cycle: a boolean either to return only multi-cycle features or not
