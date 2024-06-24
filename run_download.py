@@ -40,6 +40,8 @@ def main() -> None:
         "Donload finished. Check 'data/severson_attia' directory to see the downloaded files."
     )
 
+    return None
+
 
 if __name__ == "__main__":
     main()
