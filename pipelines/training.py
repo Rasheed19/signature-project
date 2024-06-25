@@ -66,8 +66,6 @@ def training_pipeline(
         step_size=step_size,
     )
 
-    # TODO: rrct feature importance??
-
     # hyparameter tuning for both models
     logger.info("Training model...")
     params = {
@@ -191,7 +189,7 @@ def training_pipeline(
     if include_curve_prediction and sample_cells is not None:
 
         logger.info(
-            "Prediction capacity and internal resistance curves for sample cells..."
+            "Predicting capacity and internal resistance curves for sample cells..."
         )
 
         X_inf = preprocessor.X_test.copy()
