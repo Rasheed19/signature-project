@@ -402,17 +402,6 @@ def create_knee_elbow_data(data_dict: dict[str, dict]) -> pd.DataFrame:
 
 
 def cycle_life(data_dict: dict[str, dict]) -> pd.DataFrame:
-    """
-    Function that returns the cycle life/eol of cells.
-
-    Args:
-    ----
-         data_dict (dict): a dictionary of battery cycling data
-
-    Returns:
-    -------
-           returns a list of cycle life/eol of cells.
-    """
 
     cycle_life = []
     for cell in data_dict.keys():
