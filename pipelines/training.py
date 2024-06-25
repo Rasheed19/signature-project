@@ -37,7 +37,6 @@ def training_pipeline(
     include_analysis: bool = False,
     include_curve_prediction: bool = False,
     sample_cells: list[str] | None = None,
-    # feature_selection: bool,
 ) -> None:
 
     config_logger()
