@@ -75,6 +75,7 @@ def main(
         subsampling_time_step_effect_pipeline(
             not_loaded=not_loaded,
             no_proposed_split=no_proposed_split,
+            num_cycles=DATA_CONFIG["num_cycles"],
             sig_level=DATA_CONFIG["sig_level"],
             test_size=MODEL_CONFIG["test_size"],
             param_space=MODEL_CONFIG["param_space"],
@@ -84,6 +85,7 @@ def main(
         rrct_robustness_pipeline(
             not_loaded=not_loaded,
             no_proposed_split=no_proposed_split,
+            num_cycles=DATA_CONFIG["num_cycles"],
             sig_level=DATA_CONFIG["sig_level"],
             test_size=MODEL_CONFIG["test_size"],
             model_type=model_type,
@@ -93,6 +95,7 @@ def main(
         high_freq_model_robustness_pipeline(
             not_loaded=not_loaded,
             no_proposed_split=no_proposed_split,
+            num_cycles=DATA_CONFIG["num_cycles"],
             sig_level=DATA_CONFIG["sig_level"],
             test_size=MODEL_CONFIG["test_size"],
             param_space=MODEL_CONFIG["param_space"],
@@ -102,6 +105,7 @@ def main(
         rrct_driven_modelling_pipeline(
             not_loaded=not_loaded,
             no_proposed_split=no_proposed_split,
+            num_cycles=DATA_CONFIG["num_cycles"],
             sig_level=DATA_CONFIG["sig_level"],
             test_size=MODEL_CONFIG["test_size"],
             model_type=model_type,

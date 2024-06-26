@@ -21,6 +21,7 @@ warnings.filterwarnings("ignore")
 def rrct_robustness_pipeline(
     not_loaded: bool,
     no_proposed_split: bool,
+    num_cycles: int,
     sig_level: int,
     test_size: float,
     model_type: str,
@@ -71,7 +72,7 @@ def rrct_robustness_pipeline(
             train_targets=targets["train"],
             test_targets=targets["test"],
             target_list=[TARGET_NAME],
-            num_cycles=100,
+            num_cycles=num_cycles,
             step_size=c,
             sig_level=sig_level,
         )

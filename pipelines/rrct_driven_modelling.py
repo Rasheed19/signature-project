@@ -21,6 +21,7 @@ warnings.filterwarnings("ignore")
 def rrct_driven_modelling_pipeline(
     not_loaded: bool,
     no_proposed_split: bool,
+    num_cycles: int,
     sig_level: int,
     test_size: float,
     model_type: str,
@@ -55,7 +56,7 @@ def rrct_driven_modelling_pipeline(
         target_list=[
             "EOL" if model_type == "cycle_model" else "IRatEOL"
         ],  # only EOL and IRatEOL are considered for this experiment
-        num_cycles=100,
+        num_cycles=num_cycles,
         step_size=1,
         sig_level=sig_level,
     )

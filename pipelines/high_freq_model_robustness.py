@@ -18,6 +18,7 @@ from utils.plotter import plot_high_freq_model_robustness_history
 def high_freq_model_robustness_pipeline(
     not_loaded: bool,
     no_proposed_split: bool,
+    num_cyles: int,
     sig_level: int,
     test_size: float,
     param_space: dict,
@@ -44,7 +45,7 @@ def high_freq_model_robustness_pipeline(
     preprocessor = data_preprocessor(
         train_data=train_data,
         test_data=test_data,
-        num_cycles=100,
+        num_cycles=num_cyles,
         sig_level=sig_level,
         multi_cycle=False,
         step_size=1,  # high frequency model with subsampling step size of 0.05 mins and code 1
@@ -107,7 +108,7 @@ def high_freq_model_robustness_pipeline(
             test_targets=targets["test"],
             target_list=preprocessor.cycle_target_list
             + preprocessor.cap_ir_target_list,  # all targets are considered, will be separted later
-            num_cycles=100,
+            num_cycles=num_cyles,
             step_size=c,
             sig_level=sig_level,
             no_scaled_features=True,

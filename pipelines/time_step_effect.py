@@ -20,6 +20,7 @@ from utils.plotter import plot_subsampling_time_effect_history
 def subsampling_time_step_effect_pipeline(
     not_loaded: bool,
     no_proposed_split: bool,
+    num_cycles: int,
     sig_level: int,
     test_size: float,
     param_space: dict,
@@ -70,7 +71,7 @@ def subsampling_time_step_effect_pipeline(
             train_targets=targets["train"],
             test_targets=targets["test"],
             target_list=["EOL"],  # only EOL is considered for this experiment
-            num_cycles=100,
+            num_cycles=num_cycles,
             step_size=time_step_code,
             sig_level=sig_level,
         )
