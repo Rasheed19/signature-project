@@ -54,7 +54,7 @@ from utils.definitions import ROOT_DIR
 def main(
     not_loaded: bool = False,
     no_proposed_split: bool = False,
-    model_type: str = "cycle",
+    model_type: str = "cycle_model",
     experiment_type: str = "cycle-number-effect",
 ) -> None:
 
