@@ -5,7 +5,7 @@ Feature-based machine learning models for capacity and internal resistance (IR) 
 
 Below is the graphical abstract of the research paper:
 
-![Paper abstract](assets/graphical_abstract.png)
+![Paper abstract](assets/graphical_abstract.jpg)
 
 ## Set up
 1. Clone the repository by running
